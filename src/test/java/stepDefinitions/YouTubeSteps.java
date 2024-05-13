@@ -15,12 +15,14 @@ public class YouTubeSteps {
 	WebDriver driver;
 	Scanner sc = new Scanner(System.in);
 	String input;
+	String finalInput;
 
 	@Given("User opens chrome")
 	public void user_opens_chrome() throws InterruptedException {
 		System.out.println();
 		System.out.println("Hello, please enter a YouTube search of your choice:");
 		input = sc.nextLine();
+		finalInput = input.replace(" ", "+");
 	    WebDriverManager.chromedriver().setup();
 	    driver = new ChromeDriver();
 	    driver.get("https://www.google.com/search");
@@ -46,7 +48,7 @@ public class YouTubeSteps {
 
 	@Then("User is directed to all videos")
 	public void user_is_directed_to_all_videos() throws InterruptedException {
-		String expectedUrl = "https://www.youtube.com/results?search_query=" + input; 
+		String expectedUrl = "https://www.youtube.com/results?search_query=" + finalInput; 
 	    String actualUrl = driver.getCurrentUrl();
 	    Assert.assertEquals(actualUrl, expectedUrl, "User is not on the expected login page URL.");
 	    Thread.sleep(10000);
