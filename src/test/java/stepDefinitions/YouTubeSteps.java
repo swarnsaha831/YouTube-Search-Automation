@@ -20,7 +20,9 @@ public class YouTubeSteps {
 	@Given("User opens chrome")
 	public void user_opens_chrome() throws InterruptedException {
 		System.out.println();
+		System.out.println();
 		System.out.println("Hello, please enter a YouTube search of your choice:");
+		System.out.println();
 		input = sc.nextLine();
 		finalInput = input.replace(" ", "+");
 	    WebDriverManager.chromedriver().setup();
