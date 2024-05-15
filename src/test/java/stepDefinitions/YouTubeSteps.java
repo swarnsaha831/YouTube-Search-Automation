@@ -19,12 +19,12 @@ public class YouTubeSteps {
 
 	@Given("User opens chrome")
 	public void user_opens_chrome() throws InterruptedException {
-		System.out.println();
-		System.out.println();
-		System.out.println("Hello, please enter a YouTube search of your choice:");
-		System.out.println();
-		input = sc.nextLine();
-		finalInput = input.replace(" ", "+");
+	    System.out.println();
+	    System.out.println();
+	    System.out.println("Hello, please type a YouTube search of your choice and press enter:");
+	    System.out.println();
+	    input = sc.nextLine();
+	    finalInput = input.replace(" ", "+");
 	    WebDriverManager.chromedriver().setup();
 	    driver = new ChromeDriver();
 	    driver.get("https://www.google.com/search");
@@ -52,7 +52,7 @@ public class YouTubeSteps {
 	public void user_is_directed_to_all_videos() throws InterruptedException {
 		String expectedUrl = "https://www.youtube.com/results?search_query=" + finalInput; 
 	    String actualUrl = driver.getCurrentUrl();
-	    Assert.assertEquals(actualUrl, expectedUrl, "User is not on the expected login page URL.");
+	    Assert.assertEquals(actualUrl, expectedUrl, "User is not on the expected URL.");
 	    Thread.sleep(10000);
 	    driver.quit();
 	}
